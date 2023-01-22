@@ -1,5 +1,5 @@
 import 'package:expense/const.dart';
-import 'package:expense/controllers/app_comtroller.dart';
+import 'package:expense/controllers/app_controller.dart';
 import 'package:expense/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

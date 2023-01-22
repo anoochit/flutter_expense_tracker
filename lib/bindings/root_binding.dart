@@ -1,4 +1,4 @@
-import 'package:expense/controllers/app_comtroller.dart';
+import 'package:expense/controllers/app_controller.dart';
 import 'package:get/get.dart';
 
 class RootBinding implements Bindings {
