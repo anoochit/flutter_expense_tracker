@@ -25,7 +25,7 @@ class AppController extends GetxController {
     log('total = ${total.length}');
 
     if (total.isEmpty) {
-      final id = DateFormat("yyyMMddHHmm").format(DateTime.now());
+      final id = DateFormat("yyyMMddHHmmss").format(DateTime.now());
       final item = Expense(
         id: id,
         type: "i",

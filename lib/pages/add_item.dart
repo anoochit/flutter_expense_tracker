@@ -148,29 +148,7 @@ class AddItemPage extends StatelessWidget {
                     label: const Text("Save entry"),
                     onPressed: () async {
                       // save entry
-                      if (formKey.currentState!.validate()) {
-                        final description = textDescription.text;
-                        final amount = textAmount.text;
-                        final datetime = textDatetime.text;
-                        final key =
-                            DateFormat("yyyMMddHHmm").format(DateTime.now());
-
-                        final type =
-                            ('${expenseType}'.contains('income') ? "i" : "e");
-
-                        final item = Expense(
-                          id: key,
-                          type: type,
-                          description: description,
-                          amount: double.parse(amount),
-                          datetime: DateTime.now(),
-                        );
-
-                        await expenseBox.put(key, item);
-                        controller.getBalance();
-
-                        Get.back();
-                      }
+                      await saveEntry(controller);
                     },
                   )
                 ],
@@ -178,5 +156,29 @@ class AddItemPage extends StatelessWidget {
             ),
           );
         });
+  }
+
+  Future<void> saveEntry(AppController controller) async {
+    if (formKey.currentState!.validate()) {
+      final description = textDescription.text;
+      final amount = textAmount.text;
+      final datetime = textDatetime.text;
+      final key = DateFormat("yyyMMddHHmmss").format(DateTime.now());
+
+      final type = ('${expenseType}'.contains('income') ? "i" : "e");
+
+      final item = Expense(
+        id: key,
+        type: type,
+        description: description,
+        amount: double.parse(amount),
+        datetime: DateTime.now(),
+      );
+
+      await expenseBox.put(key, item);
+      controller.getBalance();
+
+      Get.back();
+    }
   }
 }
