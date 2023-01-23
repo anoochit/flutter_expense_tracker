@@ -39,8 +39,6 @@ class HomePage extends StatelessWidget {
                       leading: Icon(
                         Icons.circle,
                         color: (item.type == 'i') ? Colors.green : Colors.red,
-                        semanticLabel:
-                            (item.type == 'i') ? "Income" : "Expense",
                       ),
                       title: Text(
                         '${item.description}',
