@@ -134,9 +134,9 @@ class AddItemPage extends StatelessWidget {
                           lastDate: DateTime.now(),
                         );
                         if (datetime != null) {
-                          final _datetime =
+                          final timestamp =
                               DateFormat("yyy-MM-DD").format(datetime);
-                          textDatetime.text = _datetime;
+                          textDatetime.text = timestamp;
                         }
                       },
                     ),
@@ -163,7 +163,7 @@ class AddItemPage extends StatelessWidget {
       final datetime = textDatetime.text;
       final key = DateFormat("yyyMMddHHmmss").format(DateTime.now());
 
-      final type = ('${expenseType}'.contains('income') ? "i" : "e");
+      final type = ('$expenseType'.contains('income') ? "i" : "e");
 
       final item = Expense(
         id: key,

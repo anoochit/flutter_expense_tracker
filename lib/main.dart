@@ -1,10 +1,7 @@
 import 'package:expense/bindings/root_binding.dart';
-import 'package:expense/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-import 'const.dart';
 import 'pages/add_item.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';

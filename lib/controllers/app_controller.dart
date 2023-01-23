@@ -53,18 +53,18 @@ class AppController extends GetxController {
 
   // get balance
   getBalance() {
-    double _balance = 0;
+    double total = 0;
     for (var element in expenseBox.values) {
       if (element.type == "i") {
         //log('income = ${element.amount}');
-        _balance = _balance + element.amount;
+        total = total + element.amount;
       } else {
         //log('expense = ${element.amount}');
-        _balance = _balance + (element.amount * -1);
+        total = total + (element.amount * -1);
       }
     }
-    log('balance = $_balance');
-    balance.value = _balance;
+    log('balance = $total');
+    balance.value = total;
     update();
   }
 
