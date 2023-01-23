@@ -11,20 +11,18 @@ import 'pages/settings.dart';
 import 'themes/theme.dart';
 
 Future<void> main() async {
-  await Hive.initFlutter();
-  // Register Adapter
-  Hive.registerAdapter(ExpenseAdapter());
-  // open box for expense
-  expenseBox = await Hive.openBox<Expense>('expense');
-  // open box for settings
-  settingsBox = await Hive.openBox('settings');
   // run app
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

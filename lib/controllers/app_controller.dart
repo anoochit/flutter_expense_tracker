@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:expense/models/expense.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
 import '../const.dart';
@@ -12,12 +13,24 @@ class AppController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    addMockupData();
-    getBalance();
+    initBox().then(
+      (value) {
+        addMockupData();
+        getBalance();
+      },
+    );
   }
 
   // init hive box
-  Future<void> initBox() async {}
+  Future<void> initBox() async {
+    await Hive.initFlutter();
+    // Register Adapter
+    Hive.registerAdapter(ExpenseAdapter());
+    // open box for expense
+    expenseBox = await Hive.openBox<Expense>('expense');
+    // open box for settings
+    settingsBox = await Hive.openBox('settings');
+  }
 
   // add mockup data
   addMockupData() async {
@@ -57,7 +70,7 @@ class AppController extends GetxController {
 
   // get entry
   int getEntryCount() {
-    if (balance != 0) {
+    if (balance.value != 0) {
       return expenseBox.values.length;
     } else {
       return 0;
